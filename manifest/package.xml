@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
+        <members>ShipmentTriggerHandler</members>
+        <members>ShipmentTriggerHandlerTest</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexComponent</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexPage</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTestSuite</name>
-    </types>
-    <types>
-        <members>*</members>
+        <members>ShipmentTrigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
-        <members>*</members>
-        <name>AuraDefinitionBundle</name>
+        <members>Shipment__c</members>
+        <name>CustomObject</name>
     </types>
     <types>
-        <members>*</members>
-        <name>LightningComponentBundle</name>
+        <members>Shipment__c.Block_Duplicate_Tracking_Number</members>
+        <name>DuplicateRule</name>
     </types>
     <types>
-        <members>*</members>
-        <name>StaticResource</name>
+        <members>Shipment_Before_Save</members>
+        <members>Shipment_After_Save</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Shipment__c-Shipment Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Shipment__c</members>
+        <name>MatchingRules</name>
     </types>
     <version>68.0</version>
 </Package>

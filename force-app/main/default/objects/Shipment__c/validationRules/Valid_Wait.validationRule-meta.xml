@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Valid_Wait</fullName>
+    <active>true</active>
+    <errorConditionFormula>Weight_kg__c &lt;= 0</errorConditionFormula>
+    <errorMessage>Wait should be more than 0Kg</errorMessage>
+</ValidationRule>
