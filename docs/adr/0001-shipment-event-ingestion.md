@@ -56,7 +56,7 @@ The scenarios where the guide says EDA does **not** fit don't apply: no user wai
 
 | Risk | Mitigation |
 |---|---|
-| **Transient failures** (e.g. record locks, or a downstream step failing) | The subscriber throws `EventBus.RetryableException`, so Salesforce **redelivers the batch** without new events being published. Use `setResumeCheckpoint(replayId)` so events already processed aren't repeated. Retries are limited: after repeated failures the trigger's subscription stops and must be monitored and resumed. *(Planned; not in the week 3 skeleton.)* |
+| **Transient failures** (e.g. record locks, or a downstream step failing) | **Implemented:** on a transient failure (`UNABLE_TO_LOCK_ROW`) the subscriber throws `EventBus.RetryableException`, so Salesforce **redelivers the batch** without new events being published. It allows 4 retries (5 attempts in total), well below the platform's maximum, because the subscription stops once the maximum is reached. Permanent failures (e.g. an invalid status) are not retried, so they can't block the subscription. *Planned:* `setResumeCheckpoint(replayId)` for batches that fail part-way, and writing failures to `Integration_Log__c` (week 13). |
 | **Retention:** events are kept for 3 days | An outage longer than 3 days means replaying from the tracking system. Monitor the subscription so outages are caught early. |
 | **Invalid status values** (`Status__c` on the event is text; on `Shipment__c` it's a restricted picklist) | One invalid value fails the whole `update`. Validate values against the picklist before updating, or use `Database.update(records, false)` and log the failures. *(Planned.)* |
 | **Out-of-order events across batches** | Within a batch, the last event wins. Across batches, compare `Event_Time__c` with the last applied event time and ignore older events. *(Planned.)* |
@@ -69,4 +69,5 @@ The scenarios where the guide says EDA does **not** fit don't apply: no user wai
 - Week 7: make `Tracking_Number__c` unique (upsert key and duplicate protection).
 - Week 11: inbound REST API (`/atlas/shipments`) publishes `Shipment_Event__e` (legacy fallback path).
 - Outbound integrations (e.g. SAP) use a separate event or a Queueable, never this subscriber.
-- Week 22: trigger framework for Shipment; add retry, checkpoint and out-of-order handling.
+- Week 21 (Platform Event triggers and recovery): add resume checkpoints and out-of-order handling to the subscriber (retry is already in place).
+- Week 22: move Shipment automation into a trigger framework.
