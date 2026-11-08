@@ -19,8 +19,8 @@ Atlas Global Logistics runs a legacy shipment-tracking system that produces abou
 
 The decision guide asks whether there is a **genuine business need** for an event-driven architecture. Three of the guide's scenarios apply:
 
-- **High-volume writes:** millions of updates a day, with surges.
-- **High-volume reads:** at peak, events can arrive faster than Salesforce can process them, so they need buffering.
+- **High-volume writes** (publishers writing to the event bus): the tracking system publishes millions of events a day, with surges.
+- **High-volume reads** (subscribers reading from the event bus): at peak, events arrive faster than the Salesforce subscriber can process them, so they need buffering.
 - **Near real-time notifications:** status changes must reach users and, later, other systems (SAP, data warehouse, customer portal) quickly.
 
 The scenarios where the guide says EDA does **not** fit don't apply: no user waits for a response, and the data changes constantly rather than rarely.
