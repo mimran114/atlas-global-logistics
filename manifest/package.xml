@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>ShipmentTriggerHandler</members>
-        <members>ShipmentTriggerHandlerTest</members>
+        <members>ShipmentEventHandler</members>
+        <members>ShipmentEventHandlerTest</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>ShipmentTrigger</members>
+        <members>ShipmentEventTrigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
-        <members>Shipment__c</members>
+        <members>Shipment_Event__e</members>
         <name>CustomObject</name>
     </types>
     <types>
